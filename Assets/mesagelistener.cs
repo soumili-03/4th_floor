@@ -11,7 +11,7 @@ public class mesagelistener : MonoBehaviour
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
     {   
-        Debug.Log(msg);
+        //Debug.Log(msg);
         string[] data =msg.Split(',');
         if(data.Length<4){
             return;
@@ -30,9 +30,8 @@ public class mesagelistener : MonoBehaviour
         else{
             gy.gx=0f;
             gy.gz=0f;
-        pla.hori=-((int)((float.Parse(data[0])-xer))*1.8f);
-        
-        pla.verti=-((int)((float.Parse(data[1])-yer))*1.8f);
+        pla.hori=-((int)((float.Parse(data[0])-xer)));
+        pla.verti=-((int)((float.Parse(data[1])-yer))*2f);
         Debug.Log(pla.hori+"||"+pla.verti);
         }
 
