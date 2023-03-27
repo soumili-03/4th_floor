@@ -11,6 +11,7 @@ public class cammovement : MonoBehaviour
 
     public Transform orientation;
     float xrot=0,yrot=0;
+    public float gz, gx;
     void Start()
     {
         Cursor.lockState=CursorLockMode.Locked;
@@ -19,8 +20,8 @@ public class cammovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     float mousex=Input.GetAxisRaw("Mouse X")*Time.deltaTime*sensx*10;
-     float mousey=Input.GetAxisRaw("Mouse Y")*Time.deltaTime*sensy*10;
+     float mousex=-gz*Time.deltaTime*sensx*12;
+     float mousey=gx*Time.deltaTime*sensy*10;
      yrot+=mousex;
      xrot-=mousey;
      xrot=Mathf.Clamp(xrot,-90f,90f);
