@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //hori=Input.GetAxisRaw("Horizontal");
-        //verti=Input.GetAxisRaw("Vertical");
+        hori=Input.GetAxisRaw("Horizontal");
+        verti=Input.GetAxisRaw("Vertical");
         move();
         Vector3 vel=new Vector3(rb.velocity.x,0, rb.velocity.z);
         if (vel.magnitude>speed)
@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour
     {
         movedir=orientation.forward*verti+orientation.right*hori;
         rb.AddForce(movedir.normalized*speed*10f,ForceMode.Force);
-        rb.AddForce(Vector3.down * 10000 *rb.mass);
+        
     }
 }

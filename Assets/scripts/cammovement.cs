@@ -9,7 +9,7 @@ public class cammovement : MonoBehaviour
     [SerializeField]
     float sensy;
 
-    public Transform orientation;
+    public Transform body;
     float xrot=0,yrot=0;
     public float gz, gx;
     void Start()
@@ -20,14 +20,15 @@ public class cammovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     float mousex=-gz*Time.deltaTime*sensx*12;
-     float mousey=gx*Time.deltaTime*sensy*10;
-     yrot+=mousex;
+    float mousex=Input.GetAxisRaw("Mouse X")*Time.deltaTime*sensx*10;
+     float mousey=Input.GetAxisRaw("Mouse Y")*Time.deltaTime*sensy*10;
+    
      xrot-=mousey;
      xrot=Mathf.Clamp(xrot,-90f,90f);
 
-    transform.rotation=Quaternion.Euler(xrot, yrot,0);
-    orientation.rotation=Quaternion.Euler(0,yrot,0);
+    transform.localRotation=Quaternion.Euler(xrot, 0,0);
+    body.Rotate(Vector3.up*mousex);
+    
 
     }
 }
