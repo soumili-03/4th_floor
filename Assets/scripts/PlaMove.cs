@@ -15,8 +15,8 @@ public class PlaMove : MonoBehaviour
     float x, y;
     void FixedUpdate()
     {
-        x=Input.GetAxis("Horizontal");
-        y=Input.GetAxis("Vertical");
+        x=SimpleInput.GetAxis("Horizontal");
+        y=SimpleInput.GetAxis("Vertical");
         Vector3 mov = -transform.right*x + -transform.forward*y;
         if (chari.isGrounded == false)
          {
